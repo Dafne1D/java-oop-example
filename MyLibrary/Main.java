@@ -22,9 +22,11 @@ class Main {
         showMembers();
       } else if (selectedMenu == 3) {
         addMember();
-      } else if (selectedMenu == 4) {
-        borrowBook();
+      }else if (selectedMenu == 4) {
+        addBook();
       } else if (selectedMenu == 5) {
+        borrowBook();
+      } else if (selectedMenu == 6) {
         returnBook();
       } else {
         System.out.println("wrong input");
@@ -40,8 +42,9 @@ class Main {
     System.out.println("1. show books list");
     System.out.println("2. show members list");
     System.out.println("3. add member");
-    System.out.println("4. borrow book");
-    System.out.println("5. return book");
+    System.out.println("4. add book");
+    System.out.println("5. borrow book");
+    System.out.println("6. return book");
     System.out.println("================================");
   }
 
@@ -109,6 +112,18 @@ class Main {
     library.addMember(member);
   }
 
+  public static void addBook() {
+    Book book = new Book();
+
+    System.out.print("id : ");
+    book.id = scan.next();
+
+    System.out.print("name : ");
+    book.title = scan.next();
+
+    library.addBook(book);
+  }
+
   public static void borrowBook() {
     System.out.print("id member : ");
     String memberId = scan.next();
@@ -116,7 +131,7 @@ class Main {
     System.out.print("id book : ");
     String bookId = scan.next();
 
-    library.giveBook(memberId, bookId);
+    library.giveBook(bookId, memberId);
   }
 
   public static void returnBook() {
@@ -126,6 +141,6 @@ class Main {
     System.out.print("id book : ");
     String bookId = scan.next();
 
-    library.receiveBook(memberId, bookId);
+    library.receiveBook(bookId, memberId);
   }
 }
